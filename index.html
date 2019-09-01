@@ -1,5 +1,5 @@
 <head>
-    <link href="https://fonts.googleapis.com/css?family=Hepta+Slab:400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Hepta+Slab:400,500,600&display=swap" rel="stylesheet">
     <style> 
         :root {
             --pagebg: #1a1a1a;
@@ -15,7 +15,8 @@
             text-align: right;
             font-family: 'Hepta Slab', sans-serif;
             color: var(--offwhite, #d0d0d0);
-            padding: 3px;
+            padding: 3px; 
+            font-weight: 600;
         }
         .undertone {
             color: var(--player, white);
@@ -30,12 +31,6 @@
             margin: 10 10 10 0;
             border-color: var(--default, white);
         }
-        ..buy-drink {
-            background-color: #202020;
-            color: var(--drink, darkgoldenrod);
-            border-color: var(--drink, darkgoldenrod);
-            margin-bottom: 10px;
-        }
         .choice, .choice > * {
             color: var(--pagebg, #121212);;
             background-color: var(--player, white);
@@ -43,11 +38,11 @@
         }
         .naoise-diag, .naoise-diag > * {
             color: var(--naoise, white);
-            font-weight: 600;
+            font-weight: 500;
         }
         .you-diag, .you-diag > * {
             color: var(--player, white);
-            font-weight: 600;
+            font-weight: 500;
         }
         h1 {
             color: var(--naoise, white);
@@ -221,7 +216,7 @@
                 <div id="bad-news">
                     <p><span class="naoise-diag">"Ohh, <em>yes.</em> But, I'm not supposed to tell anyone, and I'm not drunk enough to have any excuses if I <em>do</em> let things slip."</span></p>
                     <button type="button" class="buy-drink" onclick="buyDrink()">Buy him a drink!</button>
-                    <div id="drunkenness-container"><div id="drunkenness-bar">.</div></div>
+                    <div id="drunkenness-container"><div id="drunkenness-bar">|</div></div>
                     <div id="drunk-talk">
                         <p><span class="naoise-diag">"Sooo...it's my little brother. You know, the walking ball of snot who fancies himself Tuatha De's finest military commander?"</span></p>
                         <button type="button" class="choice" onclick="toStage('chad')">"Chád?"</button>
