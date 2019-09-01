@@ -1,51 +1,56 @@
 <head>
+    <link href="https://fonts.googleapis.com/css?family=Hepta+Slab:400,700&display=swap" rel="stylesheet">
     <style> 
         :root {
-            --darkgrey: #1a1a1a;
-            --darkorange: #d08030;
-            --lightyellow: #ffc054;
-            --lightgreen: #b0e3b2;
-            --brown: #aa863b;
-            --offwhite: #f0f0d0;
-            --lightbrown: #c7a963;
-        }
-        #drink-picture {
-            margin-left: 10px;
+            --pagebg: #1a1a1a;
+            --default: #D1C88F;
+            --default: #D1C89F;
+            --player: #729EA1;
+            --naoise: #B79953;
+            --drink:  #aa863b;
         }
         #drunkenness-bar {
-            background-color: var(--darkorange, darkgoldenrod);
+            background-color: var(--drink, darkgoldenrod);
             width: 0%;
             text-align: right;
-            font-family: sans-serif;
+            font-family: 'Hepta Slab', sans-serif;
             color: var(--offwhite, #d0d0d0);
             padding: 3px;
         }
+        .undertone {
+            color: var(--player, white);
+            font-weight: 600;
+        }
         button {
             display: inline-block;
-            padding: 2px;
-            padding-left: 10px;
-            padding-right: 10px;
+            padding: 5 10 5 10;
             border-radius: 8px;
             border-style: solid;   
             font-weight: 600;
             margin: 10 10 10 0;
+            border-color: var(--default, white);
         }
-        .buy-drink {
+        ..buy-drink {
             background-color: #202020;
-            color: var(--darkorange, darkgoldenrod);
-            border-color: var(--darkorange, darkgoldenrod);
+            color: var(--drink, darkgoldenrod);
+            border-color: var(--drink, darkgoldenrod);
             margin-bottom: 10px;
         }
         .choice, .choice > * {
-            color: var(--darkgrey, #121212);;
-            background-color: var(--lightyellow, white);;
+            color: var(--pagebg, #121212);;
+            background-color: var(--player, white);
             border: none;
         }
         .naoise-diag, .naoise-diag > * {
-            color: var(--lightbrown, white);
+            color: var(--naoise, white);
+            font-weight: 600;
         }
         .you-diag, .you-diag > * {
-            color: var(--lightyellow, white);
+            color: var(--player, white);
+            font-weight: 600;
+        }
+        h1 {
+            color: var(--naoise, white);
         }
         img {
             display: block;
@@ -53,8 +58,10 @@
             margin-right: auto;
         }
         * {
-            background-color: var(--darkgrey, #121212);
-            color: var(--offwhite, #d0d0d0);
+            background-color: var(--pagebg, #121212);
+            color: var(--default, #d0d0d0);
+            font-family: 'Hepta Slab', serif;
+            text-align: center;
         }
         body {
             display: block;
@@ -86,10 +93,10 @@
             while (y == x) {
                 y = Math.floor(Math.random() * undertones.length);
             }
-            return undertones[x] + " and " + undertones[y];
+            return "<span class='undertone'>" + undertones[x] + "</span> and <span class='undertone'>" + undertones[y] + "</span>";
         }
         function generateUndertoneReaction() {
-            let reaction = ["Yum!", "Yuck!", "Huh.", "It'll do.", "That's what you get for trying new things.", "Your guilty pleasure.", "Next time you think you'll just go with grog.", "A goblin delicacy.", "What kind of person brews this?", "You think you'll buy a bottle of this to take home.", "Weird.", "Wow.", "You miss the days of simple grog.", "You trade it with the person next to you while they aren't looking--you're not drinking that!", "You can't believe you didn't get charged more for this.", "What a ripoff!"];
+            let reaction = ["Yum!", "Yuck!", "Huh.", "It'll do.", "That's what you get for trying new things.", "Your guilty pleasure.", "Next time you think you'll just go with grog.", "A goblin delicacy.", "What kind of person brews this?", "You think you'll buy a bottle of this to take home.", "Weird.", "Wow.", "You miss the days of simple grog.", "You trade it with the person next to you while they aren't looking--you're not drinking that!", "You can't believe you didn't get charged more for this.", "What a ripoff!", "You'll need something strong to get this taste out of your mouth.", "It's a little strong, but nobody sees you spit it out."];
             return reaction[Math.floor(Math.random() * reaction.length)];
         }
         function buyDrink() {
@@ -201,7 +208,7 @@
             <button type="button" class="choice" onclick="toStage('naoise')">"Naoise!"</button>
         </p>
         <div id="naoise">
-            <p><span class="naoise-diag">"Hey, hey, look what the cat dragged in,"</span> he says as he lifts his beer in greeting. <span class="naoise-diag">"...hmph. I say, it's <em>insufferably</em> dark in this place, and I'm having actually <em>seeing</em> what the cat dragged in, are you…?"</span></p>
+            <p><span class="naoise-diag">"Hey, hey, look what the cat dragged in,"</span> he says as he lifts his beer in greeting. <span class="naoise-diag">"...hmph. I say, it's insufferably dark in this place, and I'm having actually <em>seeing</em> what the cat dragged in, are you…?"</span></p>
             <p>
                 <button type="button" class="choice" onclick="toStage('broadshaw')">"Tim Broadshaw!"</button> 
                 <button type="button" class="choice" onclick="toStage('mackey')">"Rowan Mackey!"</button>
@@ -218,22 +225,25 @@
                         <button type="button" class="choice" onclick="toStage('chad')">"Chad?"</button>
                         <div id="chad">
                             <p>Naoise shudders.</p>
-                            <p><span class="naoise-diag">"Aye. Well, he's got his eyes on the most beautiful mare you've ever seen. Faster than an arrow, and guaranteed to rear an impressive lineage. and the real kicker--absolutely undervalued. The idiot selling her wouldn't know a pony from a panda, and unless someone else steps in to buy, my brother's gonna be the one to get her."</span></p>
+                            <p><span class="naoise-diag">"Aye. Well, he's got his eyes on the most beautiful mare you've ever seen. Faster than an arrow, and guaranteed to rear an impressive lineage. And the real kicker--absolutely undervalued. The idiot selling her wouldn't know a pony from a panda, and unless someone else steps in to buy, my brother's gonna be the one to get her."</span></p>
                             <p>
-                                <button type="button" class="choice" onclick="toStage('you-buy')">"Why don't you buy her first?"</button> 
+                                <button type="button" class="choice" onclick="toStage('you-buy')">"Why don't <em>you</em> buy her first?"</button> 
                                 <button type="button" class="choice" onclick="toStage('i-buy')">"Undervalued? I guess...<em>I</em> could buy her."</button>
                             </p>
                             <div id="you-buy">
                                 <p><span class="naoise-diag">"I wish! But do you remember that spice I sold you a couple weeks ago?"</span></p>
                                 <button type="button" class="choice" onclick="toStage('best-shipment')">"Of course, the best shipment you've gotten yet!"</button> 
                                 <div id="best-shipment">
-                                    <p><span class="naoise-diag">"Haha, you know it! Well, Chad's dear little betrothed somehow found my stash last week, and my dad's dropped my allowance down to almost nothing. I could hardly buy a donkey, much less a horse."</span></p>
+                                    <p><span class="naoise-diag">"Haha, right on! Well, Chad's dear little betrothed somehow found my stash last week, and my dad's dropped my allowance down to almost nothing. I could hardly buy a donkey, much less a horse."</span></p>
                                     <button type="button" class="choice" onclick="toStage('i-buy')">"In that case, I guess <em>I</em> could buy her."</button>
                                 </div>
                             </div>
                             <div id="i-buy">
                                 <p>Naoise flashes a smile.</p>
-                                <p><span class="naoise-diag">"What an excellent solution--why didn't <em>I</em> think of that?!"</span> He raises his glass, <span class="naoise-diag">"Next round's on me!"</span></p>
+                                <p><span class="naoise-diag">"What an excellent solution--why didn't <em>I</em> think of that?!"</span></p>
+                                <p>He raises his glass, <span class="naoise-diag">"Next round's on me!"</span></p>
+                                <button type="button" class="replay" onclick="window.location.reload();">Play again!</button>
+
                             </div>
                         </div>
                     </div>
