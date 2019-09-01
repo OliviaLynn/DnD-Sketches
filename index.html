@@ -1,5 +1,274 @@
-<head></head>
+<head>
+    <style> 
+        :root {
+            --darkgrey: #1a1a1a;
+            --darkorange: #d08030;
+            --lightyellow: #ffc054;
+            --lightgreen: #b0e3b2;
+            --brown: #aa863b;
+            --offwhite: #f0f0d0;
+            --lightbrown: #c7a963;
+        }
+        #drink-picture {
+            margin-left: 10px;
+        }
+        #drunkenness-bar {
+            background-color: var(--darkorange, darkgoldenrod);
+            width: 0%;
+            text-align: right;
+            font-family: sans-serif;
+            color: var(--offwhite, #d0d0d0);
+            padding: 3px;
+        }
+        button {
+            display: inline-block;
+            padding: 2px;
+            padding-left: 10px;
+            padding-right: 10px;
+            border-radius: 8px;
+            border-style: solid;   
+            font-weight: 600;
+            margin: 10 10 10 0;
+        }
+        .buy-drink {
+            background-color: #202020;
+            color: var(--darkorange, darkgoldenrod);
+            border-color: var(--darkorange, darkgoldenrod);
+            margin-bottom: 10px;
+        }
+        .choice, .choice > * {
+            color: var(--darkgrey, #121212);;
+            background-color: var(--lightyellow, white);;
+            border: none;
+        }
+        .naoise-diag, .naoise-diag > * {
+            color: var(--lightbrown, white);
+        }
+        .you-diag, .you-diag > * {
+            color: var(--lightyellow, white);
+        }
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        * {
+            background-color: var(--darkgrey, #121212);
+            color: var(--offwhite, #d0d0d0);
+        }
+        body {
+            display: block;
+            width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 80px;
+            margin-bottom: 120px;
+        }
+
+        #get-drink, #approach, #naoise, #broadshaw, #mackey {
+            /*display: none;*/
+        }
+        div {
+            display: none;
+        }
+        #intro, #drunkenness-container, #drunkenness-bar {
+            display: block;
+        }
+        
+
+    </style>
+    <script>
+        let drunkenness = 0;
+        function generateUndertones() {
+            let undertones = ["citrus", "memories", "blueberries", "hazelnut", "goodberry", "acorn", "thistle", "earth", "rain", "nutmeg", "cherries", "wood", "peat", "smoke", "honey", "sunshine", "blood", "copper", "iron", "salt", "mushroom", "insect", "darkness", "chocolate", "mold", "sugar", "walnut", "cinnamon", "fear"];
+            let x = Math.floor(Math.random() * undertones.length);
+            let y = x;
+            while (y == x) {
+                y = Math.floor(Math.random() * undertones.length);
+            }
+            return undertones[x] + " and " + undertones[y];
+        }
+        function generateUndertoneReaction() {
+            let reaction = ["Yum!", "Yuck!", "Huh.", "It'll do.", "That's what you get for trying new things.", "Your guilty pleasure.", "Next time you think you'll just go with grog.", "A goblin delicacy.", "What kind of person brews this?", "You think you'll buy a bottle of this to take home.", "Weird.", "Wow.", "You miss the days of simple grog.", "You trade it with the person next to you while they aren't looking--you're not drinking that!", "You can't believe you didn't get charged more for this.", "What a ripoff!"];
+            return reaction[Math.floor(Math.random() * reaction.length)];
+        }
+        function buyDrink() {
+            if (drunkenness < 100) {
+                drunkenness += 5 + Math.floor(Math.random()*10);
+                if (drunkenness > 100) drunkenness = 100;
+                document.getElementById("drunkenness-bar").innerHTML = drunkenness + "%";
+                document.getElementById("drunkenness-bar").style.width = drunkenness + "%";
+            }
+            if (drunkenness == 100) {
+                toStage("drunk-talk");
+            }
+        }
+        function give(selectObj) {
+            if (selectObj.value == "letters") {
+                toStage("letters");
+            }
+            else {
+                toStage("confused");
+            }
+        }
+        function toStage(stage) {
+            console.log(stage);
+            switch (stage) {
+                case "get-drink":
+                    document.getElementById("approach").style.display = "none";
+                    document.getElementById("get-drink").style.display = "block";
+
+                    let s = "It has undertones of " + generateUndertones() + ".";
+                    document.getElementById("drink-description").innerHTML = s;
+                    document.getElementById("drink-reaction").innerHTML = generateUndertoneReaction();
+                    document.getElementById("drink-picture").src = "images/" + Math.floor(Math.random()*10) + ".png";
+                    break;
+                case "approach":
+                    document.getElementById("get-drink").style.display = "none";
+                    document.getElementById("approach").style.display = "block";
+                    break;
+                case "naoise":
+                    document.getElementById("naoise").style.display = "block";
+                    break;
+                case "broadshaw":
+                    document.getElementById("mackey").style.display = "none";
+                    document.getElementById("broadshaw").style.display = "block";
+                    break;
+                case "bad-news":
+                    document.getElementById("bad-news").style.display = "block";
+                    break;
+                case "drunk-talk":
+                    document.getElementById("drunk-talk").style.display = "block";
+                    break;
+                case "chad":
+                    document.getElementById("chad").style.display = "block";
+                    break;
+                case "you-buy":
+                    document.getElementById("you-buy").style.display = "block";
+                    break;
+                case "best-shipment":
+                    document.getElementById("best-shipment").style.display = "block";
+                    break;
+                case "i-buy":
+                    document.getElementById("i-buy").style.display = "block";
+                    break;
+                case "mackey":
+                    document.getElementById("broadshaw").style.display = "none";
+                    document.getElementById("mackey").style.display = "block";
+                    break;
+                case "as-promised":
+                    document.getElementById("as-promised").style.display = "block";
+                    break;
+                case "the-bargain":
+                    document.getElementById("the-bargain").style.display = "block";
+                    break;
+                case "confused":
+                    document.getElementById("confused").style.display = "block";
+                    break;
+                case "letters":
+                    document.getElementById("confused").style.display = "none";
+                    document.getElementById("letters").style.display = "block";
+                    break;
+                case "the-end":
+                    document.getElementById("the-end").style.display = "block";
+                    break;
+                default:
+                    break;
+            }
+        }
+
+    </script>
+</head>
+
 <body>
-<h1>Header</h1>
-<p>Some text</p>
+    <h1>A Horse And A Bar</h1>
+    <div id="intro">
+        <p>You see a siabhra with dark antlers at the end of the bar.</p>
+        <p>
+            <button type="button" class="choice" onclick="toStage('approach')">Approach.</button>
+            <button type="button" class="choice" onclick="toStage('get-drink')">Get a drink.</button>
+        </p>
+    </div>
+    <div id="get-drink">
+        <p>You get a drink.</p>
+        <img id="drink-picture" src="images/1.png" width="200">
+        <p id="drink-description">It has undertones of citrus and rain.</p>
+        <p id="drink-reaction">Yum!</p>
+    </div>
+    <div id="approach">
+        <p>You approach the siabhra.</p>
+        <p>
+            <button type="button" class="choice" onclick="toStage('naoise')">"Naoise!"</button>
+        </p>
+        <div id="naoise">
+            <p><span class="naoise-diag">"Hey, hey, look what the cat dragged in,"</span> he says as he lifts his beer in greeting. <span class="naoise-diag">"...hmph. I say, it's <em>insufferably</em> dark in this place, and I'm having actually <em>seeing</em> what the cat dragged in, are you…?"</span></p>
+            <p>
+                <button type="button" class="choice" onclick="toStage('broadshaw')">"Tim Broadshaw!"</button> 
+                <button type="button" class="choice" onclick="toStage('mackey')">"Rowan Mackey!"</button>
+            </p>
+            <div id="broadshaw">
+                <p><span class="naoise-diag">"The one and only, Tim of Bradshaw!"</span> he says. <span class="naoise-diag">"Well met, my friend--I've had the most horrible news today and I need some company to drink me through my misery."</span></p>
+                <p><button type="button" class="choice"  onclick="toStage('bad-news')">"Bad news?"</button></p>
+                <div id="bad-news">
+                    <p><span class="naoise-diag">"Ohh, <em>yes.</em> But, I'm not supposed to tell anyone, and I'm not drunk enough to have any excuses if I <em>do</em> let things slip."</span></p>
+                    <button type="button" class="buy-drink" onclick="buyDrink()">Buy him a drink!</button>
+                    <div id="drunkenness-container"><div id="drunkenness-bar">.</div></div>
+                    <div id="drunk-talk">
+                        <p><span class="naoise-diag">"Sooo...it's my little brother. You know, the walking ball of snot who fancies himself Tuatha De's finest military commander?"</span></p>
+                        <button type="button" class="choice" onclick="toStage('chad')">"Chad?"</button>
+                        <div id="chad">
+                            <p>Naoise shudders.</p>
+                            <p><span class="naoise-diag">"Aye. Well, he's got his eyes on the most beautiful mare you've ever seen. Faster than an arrow, and guaranteed to rear an impressive lineage. and the real kicker--absolutely undervalued. The idiot selling her wouldn't know a pony from a panda, and unless someone else steps in to buy, my brother's gonna be the one to get her."</span></p>
+                            <p>
+                                <button type="button" class="choice" onclick="toStage('you-buy')">"Why don't you buy her first?"</button> 
+                                <button type="button" class="choice" onclick="toStage('i-buy')">"Undervalued? I guess...<em>I</em> could buy her."</button>
+                            </p>
+                            <div id="you-buy">
+                                <p><span class="naoise-diag">"I wish! But do you remember that spice I sold you a couple weeks ago?"</span></p>
+                                <button type="button" class="choice" onclick="toStage('best-shipment')">"Of course, the best shipment you've gotten yet!"</button> 
+                                <div id="best-shipment">
+                                    <p><span class="naoise-diag">"Haha, you know it! Well, Chad's dear little betrothed somehow found my stash last week, and my dad's dropped my allowance down to almost nothing. I could hardly buy a donkey, much less a horse."</span></p>
+                                    <button type="button" class="choice" onclick="toStage('i-buy')">"In that case, I guess <em>I</em> could buy her."</button>
+                                </div>
+                            </div>
+                            <div id="i-buy">
+                                <p>Naoise flashes a smile.</p>
+                                <p><span class="naoise-diag">"What an excellent solution--why didn't <em>I</em> think of that?!"</span> He raises his glass, <span class="naoise-diag">"Next round's on me!"</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="mackey">
+                <p><span class="naoise-diag">"Mackey, my man!"</span> He rises from his bar stool to give you a friendly hug.</p>
+                <p>He fishes around in his pocket as he says, <span class="naoise-diag">"I just got you a buyer for your runt!"</span> Finding his quarry, he places the little bottle on the bartop with a <em>tak</em>.</p>
+                <img src="https://images.squarespace-cdn.com/content/v1/593855821b10e3c28f08dddd/1548599160337-TO4UP7CW7G12MARW26X7/ke17ZwdGBToddI8pDm48kMOCwsmyNq_jty4ErOubS9p7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1Udum04symRW6ShoHAPymDPlYW7xkFvmpN5CWGIjgQa5jEhgbVMRY38HPx3bIKqHiXg/Gold+Glowing+Fire+Potion.jpg" width="300">
+                <p><span class="naoise-diag">"You'll need to keep lacing her feed with this <strong>Potion of Giant Strength</strong> for another month--y'know, so she looks like an actually healthy horse--but I can get you into the buyer's stable no problem."</span></p>
+                <button type="button" class="choice" onclick="toStage('as-promised')">"Fantastic!"</button>
+                <div id="as-promised">
+                    <button type="button" class="choice" onclick="toStage('the-bargain')">"As promised, here's my end of the bargain."</button>
+                    <div id="the-bargain">
+                        <p>You reach into your bag and give Naoise
+                        <select onchange="give(this)">
+                          <option value="bottle">a bottle.</option>
+                          <option value="letters">a bundle of letters.</option>
+                          <option value="coins">a bag of coins.</option>
+                          <option value="shoe">a shoe.</option>
+                        </select>
+                        </p>
+                    </div>
+                    <div id="confused">Naoise looks confused.</div>
+                    <div id="letters">
+                        <p><span class="you-diag">"Five months of detailed letters between my dad and his mistress, from my dad's own desk,"</span> you say as you hand the letters over. <span class="you-diag">"I know getting my own dad to respect me is a bloody lost cause by now, but I'm hoping this should help your own shit situation."</span></p>
+                        <p><span class="naoise-diag">"Leverage like this? Your dad will <em>definitely</em> be getting what he deserves...and with any luck, my dad will return to giving me the allowance <em>I</em> deserve!"</span></p>
+                        <p>He laughs and takes the bundle. <span class="naoise-diag">"Cheers!"</span></p>
+                        <button type="button" class="choice" onclick="toStage('the-end')">"Cheers!"</button>
+                        <div id="the-end">
+                            <p><em>THE END.</em></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
