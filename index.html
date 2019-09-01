@@ -1,5 +1,6 @@
 <head>
     <link href="https://fonts.googleapis.com/css?family=Hepta+Slab:400,500,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Caudex:700i&display=swap" rel="stylesheet">
     <style> 
         :root {
             --pagebg: #1a1a1a;
@@ -46,7 +47,9 @@
         }
         h1 {
             color: var(--naoise, white);
-            font-size: 32;
+            font-size: 42;
+            font-family: 'Caudex', serif;
+            font-style: italic;
         }
         img {
             display: block;
@@ -93,7 +96,7 @@
             return "<span class='undertone'>" + undertones[x] + "</span> and <span class='undertone'>" + undertones[y] + "</span>";
         }
         function generateUndertoneReaction() {
-            let reaction = ["Yum!", "Yuck!", "Huh.", "It'll do.", "That's what you get for trying new things.", "Your guilty pleasure.", "Next time you think you'll just go with grog.", "A goblin delicacy.", "What kind of person brews this?", "You think you'll buy a bottle of this to take home.", "Weird.", "Wow.", "You miss the days of simple grog.", "You trade it with the person next to you while they aren't looking--you're not drinking that!", "You can't believe you didn't get charged more for this.", "What a ripoff!", "You'll need something strong to get this taste out of your mouth.", "It's a little strong, but nobody sees you spit it out."];
+            let reaction = ["Yum!", "Yuck!", "Huh.", "It'll do.", "That's what you get for trying new things.", "Your guilty pleasure.", "Next time you think you'll just go with grog.", "A goblin delicacy.", "What kind of person brews this?", "You think you'll buy a bottle of this to take home.", "Weird.", "Wow.", "You miss the days of simple grog.", "You trade it with the person next to you while they aren't looking—you're not drinking that!", "You can't believe you didn't get charged more for this.", "What a ripoff!", "You'll need something strong to get this taste out of your mouth.", "It's a little strong, but nobody sees you spit it out."];
             return reaction[Math.floor(Math.random() * reaction.length)];
         }
         function buyDrink() {
@@ -211,7 +214,7 @@
                 <button type="button" class="choice" onclick="toStage('mackey')">"Rowan Mackey!"</button>
             </p>
             <div id="broadshaw">
-                <p><span class="naoise-diag">"The one and only, Tim of Bradshaw!"</span> he says. <span class="naoise-diag">"Well met, my friend--I've had the most horrible news today and I need some company to drink me through my misery."</span></p>
+                <p><span class="naoise-diag">"The one and only, Tim of Bradshaw!"</span> he says. <span class="naoise-diag">"Well met, my friend—I've had the most horrible news today and I need some company to drink me through my misery."</span></p>
                 <p><button type="button" class="choice"  onclick="toStage('bad-news')">"Bad news?"</button></p>
                 <div id="bad-news">
                     <p><span class="naoise-diag">"Ohh, <em>yes.</em> But, I'm not supposed to tell anyone, and I'm not drunk enough to have any excuses if I <em>do</em> let things slip."</span></p>
@@ -222,7 +225,7 @@
                         <button type="button" class="choice" onclick="toStage('chad')">"Chád?"</button>
                         <div id="chad">
                             <p>Naoise shudders.</p>
-                            <p><span class="naoise-diag">"Aye. Well, he's got his eyes on the most beautiful mare you've ever seen. Faster than an arrow, and guaranteed to rear an impressive lineage. And the real kicker--absolutely undervalued. The idiot selling her wouldn't know a pony from a panda, and unless someone else steps in to buy, my brother's gonna be the one to get her."</span></p>
+                            <p><span class="naoise-diag">"Aye. Well, he's got his eyes on the most beautiful mare you've ever seen. Faster than an arrow, and guaranteed to rear an impressive lineage. And the real kicker—absolutely undervalued. The idiot selling her wouldn't know a pony from a panda, and unless someone else steps in to buy, my brother's gonna be the one to get her."</span></p>
                             <p>
                                 <button type="button" class="choice" onclick="toStage('you-buy')">"Why don't <em>you</em> buy her first?"</button> 
                                 <button type="button" class="choice" onclick="toStage('i-buy')">"Undervalued? I guess...<em>I</em> could buy her."</button>
@@ -237,7 +240,7 @@
                             </div>
                             <div id="i-buy">
                                 <p>Naoise flashes a smile.</p>
-                                <p><span class="naoise-diag">"What an excellent solution--why didn't <em>I</em> think of that?!"</span></p>
+                                <p><span class="naoise-diag">"What an excellent solution—why didn't <em>I</em> think of that?!"</span></p>
                                 <p>He raises his glass, <span class="naoise-diag">"Next round's on me!"</span></p>
                                 <button type="button" class="replay" onclick="window.location.reload();">Play again!</button>
 
@@ -250,7 +253,7 @@
                 <p><span class="naoise-diag">"Mackey, my man!"</span> He rises from his bar stool to give you a friendly hug.</p>
                 <p>He fishes around in his pocket as he says, <span class="naoise-diag">"I just got you a buyer for your runt!"</span> Finding his quarry, he places the little bottle on the bartop with a <em>tak</em>.</p>
                 <img src="https://images.squarespace-cdn.com/content/v1/593855821b10e3c28f08dddd/1548599160337-TO4UP7CW7G12MARW26X7/ke17ZwdGBToddI8pDm48kMOCwsmyNq_jty4ErOubS9p7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1Udum04symRW6ShoHAPymDPlYW7xkFvmpN5CWGIjgQa5jEhgbVMRY38HPx3bIKqHiXg/Gold+Glowing+Fire+Potion.jpg" width="300">
-                <p><span class="naoise-diag">"You'll need to keep lacing her feed with this <strong>Potion of Giant Strength</strong> for another month--y'know, so she looks like an actually healthy horse--but I can get you into the buyer's stable no problem."</span></p>
+                <p><span class="naoise-diag">"You'll need to keep lacing her feed with this <strong>Potion of Giant Strength</strong> for another month—y'know, so she looks like an actually healthy horse—but I can get you into the buyer's stable no problem."</span></p>
                 <button type="button" class="choice" onclick="toStage('as-promised')">"Fantastic!"</button>
                 <div id="as-promised">
                     <button type="button" class="choice" onclick="toStage('the-bargain')">"As promised, here's my end of the bargain."</button>
